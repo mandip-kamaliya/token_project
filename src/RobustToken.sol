@@ -22,5 +22,12 @@ contract RobustToken  is
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
+
+        uint256 initialSupply = 100_000_000 * (10**decimals());
+        _mint(msg.sender, initialSupply);
     } 
+
+    function pause() public onlyRole(PAUSER_ROLE) {
+        _pause();
+    }
 }
