@@ -18,7 +18,7 @@ contract RobustToken  is
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    constructor() ERC20(ROBUST_TOKEN,"RBT") ERCCapped(1_000_000_000 (10 * decimals())){
+    constructor() ERC20(ROBUST_TOKEN,"RBT") ERCCapped(1_000_000_000 * (10 * decimals())){
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
@@ -29,5 +29,9 @@ contract RobustToken  is
 
     function pause() public onlyRole(PAUSER_ROLE) {
         _pause();
+    }
+
+    function unpause() public onlyRole(PAUSER_ROLE) {
+        _unpause();
     }
 }
