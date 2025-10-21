@@ -15,14 +15,14 @@ contract RobustToken is ERC20, ERC20Burnable, ERC20Pausable, ERC20Capped, ERC20V
 
     constructor()
         ERC20("RobustToken", "RBT")
-        ERC20Capped(1_000_000_000 * (10 * decimals()))
+        ERC20Capped(1_000_000_000 * (10 ** 18))
         EIP712("RobustToken", "1")
     {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
 
-        uint256 initialSupply = 100_000_000 * (10 ** decimals());
+        uint256 initialSupply = 100_000_000 * (10 ** 18);
         _mint(msg.sender, initialSupply);
     }
 
