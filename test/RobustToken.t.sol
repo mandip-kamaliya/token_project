@@ -105,10 +105,9 @@ contract SimpleRobustTokenTest is Test {
             abi.encodeWithSelector(
                 ERC20Capped.ERC20ExceededCap.selector,
                 cap + 1, // The attempted total supply
-                cap      // The cap
+                cap // The cap
             )
         );
         token.mint(owner, 1);
     }
 }
-

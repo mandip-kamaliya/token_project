@@ -13,11 +13,7 @@ contract RobustToken is ERC20, ERC20Burnable, ERC20Pausable, ERC20Capped, ERC20V
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
 
-    constructor()
-        ERC20("RobustToken", "RBT")
-        ERC20Capped(1_000_000_000 * (10 ** 18))
-        EIP712("RobustToken", "1")
-    {
+    constructor() ERC20("RobustToken", "RBT") ERC20Capped(1_000_000_000 * (10 ** 18)) EIP712("RobustToken", "1") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(MINTER_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
